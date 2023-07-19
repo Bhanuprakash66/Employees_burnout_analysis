@@ -1,0 +1,73 @@
+# convert  into dateTime dataType
+burnoutDf["Date of Joining"] = pd.to_datetime(burnoutDf["Date of Joining"])
+
+# gives the number of rows and  columns
+burnoutDf.shape
+
+
+#general information printing
+burnoutDf.info()
+
+
+#extract all columns of the dataset
+burnoutDf.columns
+
+
+#checks for null values
+burnoutDf.isna().sum()
+
+
+#checking for duplicated values
+burnoutDf.duplicated().sum()
+
+
+#for calculating mean ,std,min,max and cout of every attribute
+burnoutDf.describe()
+
+
+# shows the unique values
+for i,col in enumerate(burnoutDf.columns):
+  print(f"\n\n{burnoutDf[col].unique()}")
+  print(f"\n{burnoutDf[col].value_counts()}\n\n")
+
+
+#droping irrelevant data through column wise
+burnoutDf = burnoutDf.drop(['Employee ID'],axis=1)
+
+
+# check the skewness of the attributes
+intFloatburnoutDf=burnoutDf.select_dtypes([np.int, np. float])
+for i, col in enumerate(intFloatburnoutDf.columns):
+  if (intFloatburnoutDf[col].skew() >= 0.1):
+    print("\n",col, "feature is Positively Skewed and value is: ", intFloatburnoutDf[col].skew())
+  elif (intFloatburnoutDf[col].skew() <= -0.1):
+    print("\n",col, "feature is Negtively Skewed and value is: ", intFloatburnoutDf[col].skew())
+
+  else:
+    print("\n",col, "feature is Normally Distributed and value is: ", intFloatburnoutDf[col].skew())
+
+
+
+#replacing the null values with the mean values
+burnoutDf['Resource Allocation'].fillna(burnoutDf['Resource Allocation'].mean(),inplace=True)
+burnoutDf['Mental Fatigue Score'].fillna(burnoutDf['Mental Fatigue Score'].mean(),inplace=True)
+burnoutDf['Burn Rate'].fillna(burnoutDf['Burn Rate'].mean(),inplace=True)
+
+
+#check for null values
+burnoutDf.isna().sum()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
