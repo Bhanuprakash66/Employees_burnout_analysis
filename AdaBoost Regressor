@@ -1,0 +1,16 @@
+from sklearn.metrics import r2_score
+
+
+#AdaBoost regressor
+from sklearn.ensemble import AdaBoostRegressor
+abr_model = AdaBoostRegressor
+abr_model.fit(X_train_pca, Y_train)
+
+train_pred_adaboost = abr_model.predict(X_train_pca)
+train_r2 = r2_score(Y_train,train_pred_adaboost)
+test_pred_adaboost = abr_model.predict(X_test)
+train_r2 = r2_score(Y_test,test_pred_adaboost)
+
+#Accuracy score 
+print("Accuracy score of the train data"+str(round(100*train_r2,4))+" %")
+print("Accuracy score of the test data"+str(round(100*test_r2,4))+" %")
