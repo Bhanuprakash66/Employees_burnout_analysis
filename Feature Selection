@@ -1,0 +1,16 @@
+import pandas as pd
+
+# Assuming your DataFrame is stored in the variable 'burnoutDf'
+print(burnoutDf.columns)
+
+
+# feature selection
+columns=['Date of Joining', 'Gender', 'Company Type', 'WFH Setup Available',
+       'Designation', 'Resource Allocation', 'Mental Fatigue Score',
+       'Burn Rate', 'GenderLabel', 'Company TypeLabel',
+       'WFH Setup_AvailableLabel']
+x = burnoutDf [columns]
+y = burnoutDf['Burn Rate']
+print(x)
+
+
