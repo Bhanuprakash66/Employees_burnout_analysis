@@ -1,0 +1,25 @@
+# label encoding and assign in new variable
+from sklearn import preprocessing
+from sklearn.preprocessing import LabelEncoder
+Label_encode = preprocessing.LabelEncoder()
+
+
+# Assign in new variable
+burnoutDf['GenderLabel'] = Label_encode.fit_transform(burnoutDf['Gender'].values)
+burnoutDf['Company TypeLabel'] = Label_encode.fit_transform(burnoutDf[ 'Company Type'].values)
+burnoutDf[ 'WFH Setup_AvailableLabel'] = Label_encode.fit_transform(burnoutDf[ 'WFH Setup Available'].values)
+
+
+#check assigned values
+gn= burnoutDf.groupby('Gender')
+gn=gn['GenderLabel']
+gn.first()
+
+
+#check assigned values
+wsa=burnoutDf.groupby('WFH Setup Available')
+wsa.first()
+
+
+#show last 10 rows
+burnoutDf.tail(10)
