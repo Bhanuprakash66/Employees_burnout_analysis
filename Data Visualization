@@ -1,0 +1,41 @@
+#plotting Heat map to check correlation
+Corr=burnoutDf.corr()
+sns.set(rc={'figure.figsize':(14,12)})
+fig = px.imshow(Corr,text_auto=True,aspect="auto")
+fig.show()
+
+
+#count plot distribution of "Gender"
+plt.figure(figsize=(10,8))
+sns.countplot(x="Gender",data=burnoutDf,palette="magma")
+plt.title("Plot Distribution of Gender")
+plt.show()
+
+
+
+#plot distribution of Burn rate on the basis of Designation
+import plotly.express as px
+fig = px.line(burnoutDf,y="Burn Rate",color="Designation",title="Burn rate on the basis of Designation")
+fig.update_layout(bargap=0.1)
+fig.show()
+
+
+# Plot Distribution of "Designation vs mental fatigue" as per company type, Burn rate and Gender
+sns.relplot(data=burnoutDf, x="Designation", y="Mental Fatigue Score", col="Company Type", hue="Company Type", size="Burn Rate", style="Gender", palette=["g", "r"], sizes=(50, 200))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
